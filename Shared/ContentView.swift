@@ -24,34 +24,42 @@ struct ContentView: View {
         }
         .ktakeSizeEagerly(alignment: .center)
         .popup(isPresented: $alertIsShown, alignment: .bottom) {
-            KJustStack {
-                HStack(alignment: .top) {
-                    Image(systemName: "x.circle.fill")
-                        .foregroundColor(.red)
-                    VStack(alignment: .leading) {
-                        Text("OMG something critical happened!")
-                            .foregroundColor(.red)
-                            .bold()
-                        Text("Well everything just broke down, what now?\nLets go with another line")
-                            .foregroundColor(.secondary)
-                    }
-                    Spacer()
-                    Button(action: { withAnimation(.easeIn(duration: 0.5)) { alertIsShown = false } }) {
-                        Image(systemName: "xmark")
-                            .bold()
-                            .foregroundColor(.secondary)
-                    }
-                }
-                .padding(.all, 16)
-            }
-            .ktakeWidthEagerly(alignment: .center)
-            .background(Color(uiColor: .secondarySystemBackground))
-            .padding(.bottom, 8)
-            .transition(.move(edge: .bottom))
-            .onAppear(perform: {
-                print("appearing")
-            })
+            PopupView(isShown: $alertIsShown)
         }
+    }
+}
+
+struct PopupView: View {
+    @Binding var isShown: Bool
+
+    var body: some View {
+        KJustStack {
+            HStack(alignment: .top) {
+                Image(systemName: "x.circle.fill")
+                    .foregroundColor(.red)
+                VStack(alignment: .leading) {
+                    Text("OMG something critical happened!")
+                        .foregroundColor(.red)
+                        .bold()
+                    Text("Well everything just broke down, what now?\nLets go with another line")
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
+                Button(action: { withAnimation(.easeIn(duration: 0.5)) { isShown = false } }) {
+                    Image(systemName: "xmark")
+                        .bold()
+                        .foregroundColor(.secondary)
+                }
+            }
+            .padding(.all, 16)
+        }
+        .ktakeWidthEagerly(alignment: .center)
+        .background(Color(uiColor: .secondarySystemBackground))
+        .padding(.bottom, 8)
+        .transition(.move(edge: .bottom))
+        .onAppear(perform: {
+            print("appearing")
+        })
     }
 }
 
@@ -79,6 +87,10 @@ struct Popup<V: View>: ViewModifier {
 }
 
 extension View {
+    func withPopup() {
+        
+    }
+
     func popup<Content: View>(
         isPresented: Binding<Bool>,
         alignment: Alignment,
