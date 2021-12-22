@@ -25,22 +25,22 @@ struct ContentView: View {
         .ktakeSizeEagerly(alignment: .center)
         .popup(isPresented: $alertIsShown, alignment: .bottom) {
             KJustStack {
-                VStack(alignment: .leading) {
-                    HStack {
-                        Image(systemName: "x.circle.fill")
-                            .foregroundColor(.red)
+                HStack(alignment: .top) {
+                    Image(systemName: "x.circle.fill")
+                        .foregroundColor(.red)
+                    VStack(alignment: .leading) {
                         Text("OMG something critical happened!")
                             .foregroundColor(.red)
                             .bold()
-                        Spacer()
-                        Button(action: { withAnimation(.easeIn(duration: 0.5)) { alertIsShown = false } }) {
-                            Image(systemName: "xmark")
-                                .bold()
-                                .foregroundColor(.secondary)
-                        }
+                        Text("Well everything just broke down, what now?\nLets go with another line")
+                            .foregroundColor(.secondary)
                     }
-                    Text("Well everything just broke down, what now?\nLets go with another line")
-                        .foregroundColor(.secondary)
+                    Spacer()
+                    Button(action: { withAnimation(.easeIn(duration: 0.5)) { alertIsShown = false } }) {
+                        Image(systemName: "xmark")
+                            .bold()
+                            .foregroundColor(.secondary)
+                    }
                 }
                 .padding(.all, 16)
             }
@@ -48,6 +48,9 @@ struct ContentView: View {
             .background(Color(uiColor: .secondarySystemBackground))
             .padding(.bottom, 8)
             .transition(.move(edge: .bottom))
+            .onAppear(perform: {
+                print("appearing")
+            })
         }
     }
 }
