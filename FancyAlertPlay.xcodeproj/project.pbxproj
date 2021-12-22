@@ -13,6 +13,8 @@
 		2CC44ED1277331E10029F295 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC44EBF277331D90029F295 /* ContentView.swift */; };
 		2CC44ED2277331E10029F295 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC44EC0277331E10029F295 /* Assets.xcassets */; };
 		2CC44ED3277331E10029F295 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC44EC0277331E10029F295 /* Assets.xcassets */; };
+		2CC44EE1277338FE0029F295 /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2CC44EE0277338FE0029F295 /* SalmonUI */; };
+		2CC44EE4277339090029F295 /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2CC44EE3277339090029F295 /* SalmonUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CC44EE1277338FE0029F295 /* SalmonUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CC44EE4277339090029F295 /* SalmonUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +49,7 @@
 		2CC44EB8277331D80029F295 = {
 			isa = PBXGroup;
 			children = (
+				2CC44EE2277339090029F295 /* Frameworks */,
 				2CC44EC6277331E10029F295 /* Products */,
 				2CC44EBD277331D90029F295 /* Shared */,
 				2CC44EDC277332BB0029F295 /* Targets */,
@@ -94,6 +99,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		2CC44EE2277339090029F295 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -110,6 +122,9 @@
 			dependencies = (
 			);
 			name = "FancyAlertPlay (iOS)";
+			packageProductDependencies = (
+				2CC44EE0277338FE0029F295 /* SalmonUI */,
+			);
 			productName = "FancyAlertPlay (iOS)";
 			productReference = 2CC44EC5277331E10029F295 /* FancyAlertPlay.app */;
 			productType = "com.apple.product-type.application";
@@ -127,6 +142,9 @@
 			dependencies = (
 			);
 			name = "FancyAlertPlay (macOS)";
+			packageProductDependencies = (
+				2CC44EE3277339090029F295 /* SalmonUI */,
+			);
 			productName = "FancyAlertPlay (macOS)";
 			productReference = 2CC44ECB277331E10029F295 /* FancyAlertPlay.app */;
 			productType = "com.apple.product-type.application";
@@ -158,6 +176,9 @@
 				Base,
 			);
 			mainGroup = 2CC44EB8277331D80029F295;
+			packageReferences = (
+				2CC44EDF277338FE0029F295 /* XCRemoteSwiftPackageReference "SalmonUI" */,
+			);
 			productRefGroup = 2CC44EC6277331E10029F295 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -468,6 +489,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2CC44EDF277338FE0029F295 /* XCRemoteSwiftPackageReference "SalmonUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kamaal111/SalmonUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2CC44EE0277338FE0029F295 /* SalmonUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CC44EDF277338FE0029F295 /* XCRemoteSwiftPackageReference "SalmonUI" */;
+			productName = SalmonUI;
+		};
+		2CC44EE3277339090029F295 /* SalmonUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2CC44EDF277338FE0029F295 /* XCRemoteSwiftPackageReference "SalmonUI" */;
+			productName = SalmonUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2CC44EB9277331D80029F295 /* Project object */;
 }
