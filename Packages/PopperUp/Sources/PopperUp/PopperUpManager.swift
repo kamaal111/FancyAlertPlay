@@ -10,8 +10,11 @@ import SwiftUI
 public final class PopperUpManager: ObservableObject {
 
     @Published var isShown = false
+    @Published private(set) var config: PopperUpConfig
 
-    public init() { }
+    public init(config: PopperUpConfig) {
+        self.config = config
+    }
 
     public func showPopup() {
         withAnimation(.easeOut(duration: 0.5)) { isShown = true }
@@ -19,6 +22,10 @@ public final class PopperUpManager: ObservableObject {
 
     public func hidePopup() {
         withAnimation(.easeIn(duration: 0.5)) { isShown = false }
+    }
+
+    public func setConfig(with config: PopperUpConfig) {
+        self.config = config
     }
 
 }
