@@ -10,8 +10,9 @@ import SwiftUI
 public final class PopperUpManager: ObservableObject {
 
     @Published var isShown = false
+    @Published private(set) var popperUpType: PopperUpTypes = .success
     @Published private(set) var config: PopperUpConfig
-    @Published private(set) var lastTimeout: TimeInterval? {
+    @Published private var lastTimeout: TimeInterval? {
         didSet { lastTimeoutDidSet() }
     }
 
@@ -19,10 +20,11 @@ public final class PopperUpManager: ObservableObject {
         self.config = config
     }
 
-    public func showPopup(timeout: TimeInterval? = nil) {
+    public func showPopup(ofType type: PopperUpTypes, timeout: TimeInterval? = nil) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
 
+            self.popperUpType = type
             withAnimation(.easeOut(duration: 0.5)) { self.isShown = true }
             self.lastTimeout = timeout
         }
