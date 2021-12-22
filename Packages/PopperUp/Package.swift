@@ -5,16 +5,23 @@ import PackageDescription
 
 let package = Package(
     name: "PopperUp",
+    platforms: [
+        .iOS(.v13),
+    ],
     products: [
         .library(
             name: "PopperUp",
             targets: ["PopperUp"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/kamaal111/SalmonUI.git", "4.3.3"..<"5.0.0"),
+    ],
     targets: [
         .target(
             name: "PopperUp",
-            dependencies: []),
+            dependencies: [
+                "SalmonUI",
+            ]),
         .testTarget(
             name: "PopperUpTests",
             dependencies: ["PopperUp"]),
