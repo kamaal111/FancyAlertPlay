@@ -15,6 +15,8 @@
 		2CC44ED3277331E10029F295 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC44EC0277331E10029F295 /* Assets.xcassets */; };
 		2CC44EE1277338FE0029F295 /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2CC44EE0277338FE0029F295 /* SalmonUI */; };
 		2CC44EE4277339090029F295 /* SalmonUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2CC44EE3277339090029F295 /* SalmonUI */; };
+		2CF1FB8B277379E9006A99ED /* PopperUp in Frameworks */ = {isa = PBXBuildFile; productRef = 2CF1FB8A277379E9006A99ED /* PopperUp */; };
+		2CF1FB8D277379EF006A99ED /* PopperUp in Frameworks */ = {isa = PBXBuildFile; productRef = 2CF1FB8C277379EF006A99ED /* PopperUp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,7 @@
 		2CC44EC5277331E10029F295 /* FancyAlertPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FancyAlertPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC44ECB277331E10029F295 /* FancyAlertPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FancyAlertPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC44ECD277331E10029F295 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		2CF1FB8927737987006A99ED /* PopperUp */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PopperUp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +35,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC44EE1277338FE0029F295 /* SalmonUI in Frameworks */,
+				2CF1FB8D277379EF006A99ED /* PopperUp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +44,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC44EE4277339090029F295 /* SalmonUI in Frameworks */,
+				2CF1FB8B277379E9006A99ED /* PopperUp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				2CC44EE2277339090029F295 /* Frameworks */,
+				2CF1FB8827737917006A99ED /* Packages */,
 				2CC44EC6277331E10029F295 /* Products */,
 				2CC44EBD277331D90029F295 /* Shared */,
 				2CC44EDC277332BB0029F295 /* Targets */,
@@ -106,6 +112,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2CF1FB8827737917006A99ED /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				2CF1FB8927737987006A99ED /* PopperUp */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -124,6 +138,7 @@
 			name = "FancyAlertPlay (iOS)";
 			packageProductDependencies = (
 				2CC44EE0277338FE0029F295 /* SalmonUI */,
+				2CF1FB8C277379EF006A99ED /* PopperUp */,
 			);
 			productName = "FancyAlertPlay (iOS)";
 			productReference = 2CC44EC5277331E10029F295 /* FancyAlertPlay.app */;
@@ -144,6 +159,7 @@
 			name = "FancyAlertPlay (macOS)";
 			packageProductDependencies = (
 				2CC44EE3277339090029F295 /* SalmonUI */,
+				2CF1FB8A277379E9006A99ED /* PopperUp */,
 			);
 			productName = "FancyAlertPlay (macOS)";
 			productReference = 2CC44ECB277331E10029F295 /* FancyAlertPlay.app */;
@@ -511,6 +527,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2CC44EDF277338FE0029F295 /* XCRemoteSwiftPackageReference "SalmonUI" */;
 			productName = SalmonUI;
+		};
+		2CF1FB8A277379E9006A99ED /* PopperUp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PopperUp;
+		};
+		2CF1FB8C277379EF006A99ED /* PopperUp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PopperUp;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
