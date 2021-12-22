@@ -9,12 +9,12 @@ import SwiftUI
 import SalmonUI
 
 struct ContentView: View {
-    @State private var alertIsShown = false
+    @StateObject private var popupManager = PopupManager()
 
     var body: some View {
         ZStack {
             VStack {
-                Button(action: { withAnimation(.easeOut(duration: 0.5)) { alertIsShown = true } }) {
+                Button(action: { popupManager.showPopup() }) {
                     Text("Show alert")
                 }
                 Button(action: { print(Int.random(in: 0..<10)) }) {
@@ -23,14 +23,12 @@ struct ContentView: View {
             }
         }
         .ktakeSizeEagerly(alignment: .center)
-        .popup(isPresented: $alertIsShown, alignment: .bottom) {
-            PopupView(isShown: $alertIsShown)
-        }
+        .withPopup(popupManager)
     }
 }
 
 struct PopupView: View {
-    @Binding var isShown: Bool
+    @ObservedObject var manager: PopupManager
 
     var body: some View {
         KJustStack {
@@ -45,7 +43,7 @@ struct PopupView: View {
                         .foregroundColor(.secondary)
                 }
                 Spacer()
-                Button(action: { withAnimation(.easeIn(duration: 0.5)) { isShown = false } }) {
+                Button(action: { manager.hidePopup() }) {
                     Image(systemName: "xmark")
                         .bold()
                         .foregroundColor(.secondary)
@@ -86,12 +84,30 @@ struct Popup<V: View>: ViewModifier {
     }
 }
 
-extension View {
-    func withPopup() {
-        
+final class PopupManager: ObservableObject {
+
+    @Published var isShown = false
+
+    func showPopup() {
+        withAnimation(.easeOut(duration: 0.5)) { isShown = true }
     }
 
-    func popup<Content: View>(
+    func hidePopup() {
+        withAnimation(.easeIn(duration: 0.5)) { isShown = false }
+    }
+
+}
+
+extension View {
+    func withPopup(@ObservedObject _ manager: PopupManager) -> some View {
+        self
+            .popup(isPresented: $manager.isShown, alignment: .bottom, content: {
+                PopupView(manager: manager)
+            })
+            .environmentObject(manager)
+    }
+
+    private func popup<Content: View>(
         isPresented: Binding<Bool>,
         alignment: Alignment,
         @ViewBuilder content: () -> Content) -> some View {
