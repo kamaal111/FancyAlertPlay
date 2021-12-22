@@ -13,9 +13,8 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            Color.pink
             VStack {
-                Button(action: { alertIsShown = true }) {
+                Button(action: { withAnimation(.easeOut(duration: 0.5)) { alertIsShown = true } }) {
                     Text("Show alert")
                 }
                 Button(action: { print(Int.random(in: 0..<10)) }) {
@@ -23,13 +22,32 @@ struct ContentView: View {
                 }
             }
         }
+        .ktakeSizeEagerly(alignment: .center)
         .popup(isPresented: $alertIsShown, alignment: .bottom) {
-            VStack {
-                Text("WARNING")
+            KJustStack {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "x.circle.fill")
+                            .foregroundColor(.red)
+                        Text("OMG something critical happened!")
+                            .foregroundColor(.red)
+                            .bold()
+                        Spacer()
+                        Button(action: { withAnimation(.easeIn(duration: 0.5)) { alertIsShown = false } }) {
+                            Image(systemName: "xmark")
+                                .bold()
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                    Text("Well everything just broke down, what now?\nLets go with another line")
+                        .foregroundColor(.secondary)
+                }
+                .padding(.all, 16)
             }
             .ktakeWidthEagerly(alignment: .center)
-            .background(.yellow)
+            .background(Color(uiColor: .secondarySystemBackground))
             .padding(.bottom, 8)
+            .transition(.move(edge: .bottom))
         }
     }
 }
