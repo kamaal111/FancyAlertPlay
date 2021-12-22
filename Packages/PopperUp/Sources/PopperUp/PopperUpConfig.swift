@@ -5,7 +5,7 @@
 //  Created by Kamaal M Farah on 22/12/2021.
 //
 
-import Foundation
+import SwiftUI
 
 public struct PopperUpConfig {
     public let backgroundColor: Color

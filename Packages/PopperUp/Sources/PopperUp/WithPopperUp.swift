@@ -26,40 +26,6 @@ extension View {
         }
 }
 
-struct PopupView: View {
-    @ObservedObject var manager: PopperUpManager
-
-    var body: some View {
-        KJustStack {
-            HStack(alignment: .top) {
-                Image(systemName: "x.circle.fill")
-                    .foregroundColor(.red)
-                VStack(alignment: .leading) {
-                    Text("OMG something critical happened!")
-                        .foregroundColor(.red)
-                        .bold()
-                    Text("Well everything just broke down, what now?\nLets go with another line")
-                        .foregroundColor(.secondary)
-                }
-                Spacer()
-                Button(action: { manager.hidePopup() }) {
-                    Image(systemName: "xmark")
-                        .bold()
-                        .foregroundColor(.secondary)
-                }
-            }
-            .padding(.all, 16)
-        }
-        .ktakeWidthEagerly(alignment: .center)
-        .background(manager.config.backgroundColor)
-        .padding(.bottom, 8)
-        .transition(.move(edge: .bottom))
-        .onAppear(perform: {
-            print("appearing")
-        })
-    }
-}
-
 struct Popup<V: View>: ViewModifier {
     @Binding var isPresented: Bool
 
