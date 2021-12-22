@@ -15,7 +15,7 @@ public final class PopperUpManager: ObservableObject {
         didSet { lastTimeoutDidSet() }
     }
 
-    public init(config: PopperUpConfig) {
+    public init(config: PopperUpConfig = .init()) {
         self.config = config
     }
 

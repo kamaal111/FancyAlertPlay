@@ -39,9 +39,8 @@ struct PopupView: View {
     }
 }
 
-@available(iOS 15.0, *)
 struct PopupView_Previews: PreviewProvider {
     static var previews: some View {
-        PopupView(manager: .init(config: .init(backgroundColor: .init(uiColor: .secondarySystemBackground))))
+        PopupView(manager: .init())
     }
 }

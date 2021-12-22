@@ -10,7 +10,7 @@ import SwiftUI
 public struct PopperUpConfig {
     public let backgroundColor: Color
 
-    public init(backgroundColor: Color) {
+    public init(backgroundColor: Color = Color(UIColor.secondarySystemBackground)) {
         self.backgroundColor = backgroundColor
     }
 }

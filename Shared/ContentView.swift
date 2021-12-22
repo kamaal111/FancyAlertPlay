@@ -10,8 +10,7 @@ import SalmonUI
 import PopperUp
 
 struct ContentView: View {
-    @StateObject private var popperUpManager = PopperUpManager(config: .init(
-        backgroundColor: Color(uiColor: .secondarySystemBackground)))
+    @StateObject private var popperUpManager = PopperUpManager()
 
     var body: some View {
         ZStack {
