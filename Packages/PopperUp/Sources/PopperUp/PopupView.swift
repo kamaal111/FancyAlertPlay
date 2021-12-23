@@ -36,6 +36,7 @@ struct PopupView: View {
         }
         .ktakeWidthEagerly(alignment: .center)
         .background(manager.config.backgroundColor)
+        .cornerRadius(8)
         .padding(.bottom, 8)
         .transition(.move(edge: .bottom))
     }
