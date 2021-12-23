@@ -16,6 +16,8 @@ public final class PopperUpManager: ObservableObject {
         didSet { lastTimeoutDidSet() }
     }
 
+    private var timeoutTimer: Timer?
+
     public init(config: PopperUpConfig = .init()) {
         self.config = config
     }
@@ -34,7 +36,7 @@ public final class PopperUpManager: ObservableObject {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
 
-            withAnimation(.easeIn(duration: 0.5)) { self.isShown = false }
+            withAnimation(.easeIn(duration: 0.8)) { self.isShown = false }
             self.lastTimeout = nil
         }
     }
@@ -45,17 +47,18 @@ public final class PopperUpManager: ObservableObject {
 
     private func lastTimeoutDidSet() {
         guard let lastTimeout = self.lastTimeout else { return }
-        Timer.scheduledTimer(
+        let timeoutTimer = Timer.scheduledTimer(
             timeInterval: lastTimeout,
             target: self,
             selector: #selector(handleTimeout),
             userInfo: nil,
             repeats: false)
+        self.timeoutTimer = timeoutTimer
     }
 
     @objc
     private func handleTimeout(_ sender: Timer?) {
-        sender?.invalidate()
+        timeoutTimer?.invalidate()
         hidePopup()
     }
 

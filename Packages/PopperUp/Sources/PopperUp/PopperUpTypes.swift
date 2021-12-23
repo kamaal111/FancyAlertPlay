@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 public enum PopperUpTypes {
     case success
@@ -14,12 +15,17 @@ public enum PopperUpTypes {
 
     var iconName: String {
         switch self {
-        case .success:
-             return ""
-        case .warning:
-            return ""
-        case .error:
-            return "x.circle.fill"
+        case .success: return "checkmark.circle.fill"
+        case .warning: return "exclamationmark.triangle.fill"
+        case .error: return "x.circle.fill"
+        }
+    }
+
+    var color: Color {
+        switch self {
+        case .success: return .green
+        case .warning: return .yellow
+        case .error: return .red
         }
     }
 }

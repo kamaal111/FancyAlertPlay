@@ -14,11 +14,11 @@ struct PopupView: View {
     var body: some View {
         KJustStack {
             HStack(alignment: .top) {
-                Image(systemName: "x.circle.fill")
-                    .foregroundColor(.red)
+                Image(systemName: manager.popperUpType.iconName)
+                    .foregroundColor(manager.popperUpType.color)
                 VStack(alignment: .leading) {
                     Text("OMG something critical happened!")
-                        .foregroundColor(.red)
+                        .foregroundColor(manager.popperUpType.color)
                         .bold()
                     Text("Well everything just broke down, what now?\nLets go with another line")
                         .foregroundColor(.secondary)
