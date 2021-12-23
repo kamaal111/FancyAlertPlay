@@ -17,11 +17,13 @@ struct PopupView: View {
                 Image(systemName: manager.popperUpType.iconName)
                     .foregroundColor(manager.popperUpType.color)
                 VStack(alignment: .leading) {
-                    Text("OMG something critical happened!")
+                    Text(manager.popupTitle)
                         .foregroundColor(manager.popperUpType.color)
                         .bold()
-                    Text("Well everything just broke down, what now?\nLets go with another line")
-                        .foregroundColor(.secondary)
+                    if let description = manager.popupDescription {
+                        Text(description)
+                            .foregroundColor(.secondary)
+                    }
                 }
                 Spacer()
                 Button(action: { manager.hidePopup() }) {

@@ -15,7 +15,13 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             VStack {
-                Button(action: { popperUpManager.showPopup(ofType: .success, timeout: 3) }) {
+                Button(action: {
+                    popperUpManager.showPopup(
+                        ofType: .success,
+                        title: "Successfully done something",
+                        description: "such and such such",
+                        timeout: nil)
+                }) {
                     Text("Show alert")
                 }
                 Button(action: { print(Int.random(in: 0..<10)) }) {
