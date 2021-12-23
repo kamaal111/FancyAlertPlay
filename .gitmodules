@@ -1,3 +1,4 @@
 [submodule "PopperUp"]
 	path = Packages/PopperUp
 	url = git@github.com:kamaal111/PopperUp.git
+	branch = release/0.1.0
