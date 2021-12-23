@@ -31,6 +31,7 @@ struct PopupView: View {
                         .bold()
                         .foregroundColor(.secondary)
                 }
+                .buttonStyle(PlainButtonStyle())
             }
             .padding(.all, 16)
         }

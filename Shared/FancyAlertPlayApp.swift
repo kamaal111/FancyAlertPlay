@@ -12,6 +12,9 @@ struct FancyAlertPlayApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                #if os(macOS)
+                .frame(minWidth: 300, minHeight: 300)
+                #endif
         }
     }
 }

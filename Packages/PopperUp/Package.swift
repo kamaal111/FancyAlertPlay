@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "PopperUp",
     platforms: [
-        .iOS(.v13),
+        .iOS(.v13), .macOS(.v11),
     ],
     products: [
         .library(
@@ -21,6 +21,9 @@ let package = Package(
             name: "PopperUp",
             dependencies: [
                 "SalmonUI",
+            ],
+            resources: [
+                .process("Resources"),
             ]),
         .testTarget(
             name: "PopperUpTests",
